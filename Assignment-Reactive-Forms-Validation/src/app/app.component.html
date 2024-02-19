@@ -1,0 +1,66 @@
+<div class="container p-5">
+  <h3>Form Validation Assignment</h3>
+  <h5>Static Form Validation</h5>
+  <hr>
+  <form [formGroup]="validate" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input type="email" class="form-control w-25" formControlName="email">
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control w-25" formControlName="username">
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control w-25" id="exampleInputPassword1" formControlName="password">
+    </div>
+
+    <button type="submit" class="btn btn-light">Submit</button>
+  </form>
+
+  <div class="m-2" *ngIf="username !== '' || password !== '' || email !== ''">
+    <form (ngSubmit)="reset()">
+      <button type="submit" class="btn btn-danger">Reset</button>
+    </form>
+
+  </div>
+</div>
+
+
+<div class="container fs-5 text-light" *ngIf="username !== '' && password !== '' && email !== ''">
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>
+          Username
+        </th>
+        <th>
+          Password
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngIf="username !== '' || password !== '' || email !== ''">
+        <td *ngIf="username !== ''">
+          {{username}}
+        </td>
+        <td *ngIf="password !== ''">
+          {{password}}
+        </td>
+        <td *ngIf="email !== ''">
+          {{email}}
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
